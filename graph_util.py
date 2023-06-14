@@ -18,7 +18,6 @@ class GraphBuilder:
         self.num_nodes = int(lines[0].split(":")[1].strip())
         self.min_neighbors = int(lines[1].split(":")[1].strip())
         self.max_neighbors = int(lines[2].split(":")[1].strip())
-
         is_resources_section = False
         for line in lines[3:]:
             if line.strip() == "":
