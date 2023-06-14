@@ -11,7 +11,22 @@ class Algorithms:
             case "informed_random_walk":
                 return self.informed_random_walk(initial_node_id, resource_id, ttl)
 
-    def flooding(self, initial_node_id, resource_id, ttl):
+    def flooding(self, initial_node_id, resource_id, ttl, graph):
+        visited = set()
+        queue = [initial_node_id]
+
+        while queue:
+            node = queue.pop(0)
+            visited.add(node)
+
+            if graph.nodes[node]['value'] == resource_id:
+                return node
+
+            neighbors = graph.neighbors(node)
+            for neighbor in neighbors:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+
         pass
 
     def informed_flooding(self, initial_node_id, resource_id, ttl):
